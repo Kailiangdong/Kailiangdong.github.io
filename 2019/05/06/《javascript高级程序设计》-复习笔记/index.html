@@ -1,0 +1,809 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="frontend,review,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一章 JavaScript简介文档对象模型（DOM) ,提供访问和操作网页内容的方法和接口浏览器对象模型（BOM), 提供与浏览器交互的方法和窗口,windows对象   ：弹出浏览器，缩放浏览器，提供分辨率，提供cookies支持 第二章 JavaScript运用在html中XHTML中tag可以不用封口，但是html很严格需要封口。 假如把script 的tag放在head里面，浏览器要加载">
+<meta name="keywords" content="frontend,review">
+<meta property="og:type" content="article">
+<meta property="og:title" content="《javascript高级程序设计》 复习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/05/06/《javascript高级程序设计》-复习笔记/index.html">
+<meta property="og:site_name" content="KailiangDong&#39;s Blog">
+<meta property="og:description" content="第一章 JavaScript简介文档对象模型（DOM) ,提供访问和操作网页内容的方法和接口浏览器对象模型（BOM), 提供与浏览器交互的方法和窗口,windows对象   ：弹出浏览器，缩放浏览器，提供分辨率，提供cookies支持 第二章 JavaScript运用在html中XHTML中tag可以不用封口，但是html很严格需要封口。 假如把script 的tag放在head里面，浏览器要加载">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2019-05-06T17:02:24.974Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="《javascript高级程序设计》 复习笔记">
+<meta name="twitter:description" content="第一章 JavaScript简介文档对象模型（DOM) ,提供访问和操作网页内容的方法和接口浏览器对象模型（BOM), 提供与浏览器交互的方法和窗口,windows对象   ：弹出浏览器，缩放浏览器，提供分辨率，提供cookies支持 第二章 JavaScript运用在html中XHTML中tag可以不用封口，但是html很严格需要封口。 假如把script 的tag放在head里面，浏览器要加载">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/05/06/《javascript高级程序设计》-复习笔记/">
+
+
+
+
+
+  <title>《javascript高级程序设计》 复习笔记 | KailiangDong's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KailiangDong's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Think Over then do it.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/05/06/《javascript高级程序设计》-复习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kailiang Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KailiangDong's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">《javascript高级程序设计》 复习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-05-06T19:01:55+02:00">
+                2019-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章-JavaScript简介"><a href="#第一章-JavaScript简介" class="headerlink" title="第一章 JavaScript简介"></a>第一章 JavaScript简介</h1><p>文档对象模型（DOM) ,提供访问和操作网页内容的方法和接口<br>浏览器对象模型（BOM), 提供与浏览器交互的方法和窗口,windows对象<br>   ：弹出浏览器，缩放浏览器，提供分辨率，提供cookies支持</p>
+<h1 id="第二章-JavaScript运用在html中"><a href="#第二章-JavaScript运用在html中" class="headerlink" title="第二章 JavaScript运用在html中"></a>第二章 JavaScript运用在html中</h1><p>XHTML中tag可以不用封口，但是html很严格需要封口。</p>
+<p>假如把script 的tag放在head里面，浏览器要加载好js才能呈现页面，就很慢，所以我们一般放在body前面。</p>
+<p>script里面延迟属性， 加一个属性defer = “defer”。告诉他脚本执行时不会影响页面的构造。</p>
+<h1 id="第三章-基本概念"><a href="#第三章-基本概念" class="headerlink" title="第三章 基本概念"></a>第三章 基本概念</h1><p>变量名 test和Test是两个不同变量名<br>JavaScript严格模式”use strict”<br>良好的代码风格。加上分号和代码块</p>
+<p>定义一个var变量，他在局部变量使用后马上销毁<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> message = <span class="string">"hi"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message);</span><br></pre></td></tr></table></figure></p>
+<p>但是如果不加var，就会变成全局变量。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	message = <span class="string">"hi"</span>;</span><br><span class="line">&#125;</span><br><span class="line">test();</span><br><span class="line">alert(message);</span><br></pre></td></tr></table></figure></p>
+<h2 id="数据类型"><a href="#数据类型" class="headerlink" title="数据类型"></a>数据类型</h2><p>JavaScript五种简单的类型， Undefined, Null, Boolean, Number 和 String.<br>复杂数据类型 Object。<br>使用typeof鉴别类型，这是一个操作符不是函数<br>typeof null 返回 object,特殊值null被认为是一个空对象的引用。</p>
+<h3 id="undefined"><a href="#undefined" class="headerlink" title="undefined"></a>undefined</h3><p>未初始化变量就是undefined，不用特意把一个变量设置为undefined<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//对未声明的变量只能用typeof</span></span><br><span class="line"><span class="comment">// var tmp</span></span><br><span class="line">alert(tmp);  <span class="comment">//报错</span></span><br><span class="line"><span class="keyword">typeof</span> tmp;<span class="comment">//得到答案，”undefined"</span></span><br><span class="line">### null</span><br><span class="line"><span class="literal">null</span>就是一个空对象指针</span><br><span class="line">对于你不知道初始化什么值得时候，赋予它<span class="literal">null</span>，这样你下次也好判定是不是<span class="literal">null</span></span><br><span class="line"><span class="string">``</span><span class="string">`javascript</span></span><br><span class="line"><span class="string">//事实上这个返回true，因为undefined的值派生自null值</span></span><br><span class="line"><span class="string">alert(null == undefined);</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Boolean"><a href="#Boolean" class="headerlink" title="Boolean"></a>Boolean</h2><p>要将一个值转化为其对应的boolean的值，可以调用转型函数Boolean();<br>string: 非空字符串转化为true， 空字符串false;<br>number: 任何非零数字值转化为true，0和nan转化为false;</p>
+<h2 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> num1 = <span class="number">070</span> <span class="comment">//八进制的56</span></span><br><span class="line"><span class="keyword">var</span> num2 = <span class="number">0xA</span> <span class="comment">//十六进制的10</span></span><br></pre></td></tr></table></figure>
+<p><strong>浮点数不准，慎用</strong>0.1+0.3不等于0.4</p>
+<p>NaN 非数值，解决的问题，表示本来要返回数值的操作数未返回数值的情况。<br>值得注意的是，NaN和任何值都不相等，<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">alert(<span class="literal">NaN</span> == <span class="literal">NaN</span>);</span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="literal">NaN</span>));<span class="comment">//true</span></span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="number">10</span>));  <span class="comment">//false</span></span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="string">"10"</span>)); <span class="comment">//false</span></span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="string">"blue"</span>)); <span class="comment">//true</span></span><br><span class="line">alert(<span class="built_in">isNaN</span>(<span class="literal">true</span>));  <span class="comment">//false ,可以被转化为数值1</span></span><br><span class="line"><span class="comment">//任何不是数值的值被转化为数值，实在不行返回false</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="数值转换"><a href="#数值转换" class="headerlink" title="数值转换"></a>数值转换</h3><h4 id="Number-1"><a href="#Number-1" class="headerlink" title="Number()"></a>Number()</h4><p>把任何数据类型转换成数值,字符串空的转化为0,不空而且不是数字的话为NaN<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Number</span>(<span class="literal">true</span>) = <span class="number">1</span>;</span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">null</span>) = <span class="number">0</span>;</span><br><span class="line"><span class="built_in">Number</span>(<span class="literal">undefined</span>) = <span class="literal">NaN</span>;</span><br><span class="line"><span class="built_in">Number</span>(<span class="string">"asdasd"</span>) =<span class="literal">NaN</span>;</span><br><span class="line"><span class="built_in">Number</span>(<span class="string">""</span>) = <span class="number">0</span>;</span><br></pre></td></tr></table></figure></p>
+<p>重点看p30页</p>
+<h4 id="parseInt"><a href="#parseInt" class="headerlink" title="parseInt()"></a>parseInt()</h4><p>parseInt只认到数字结束<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseInt</span>(<span class="string">"1234blue"</span>);  <span class="comment">//1234</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">""</span>); <span class="comment">//NaN</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"0xA"</span>); <span class="comment">//10</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"10"</span>, <span class="number">2</span>);   <span class="comment">//按照二进制解析</span></span><br><span class="line"><span class="built_in">parseInt</span>(<span class="string">"10"</span>, <span class="number">8</span>);  <span class="comment">//按照八进制解析</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="parseFloat"><a href="#parseFloat" class="headerlink" title="parseFloat()"></a>parseFloat()</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">parseFloat</span>(<span class="number">22.34</span><span class="number">.5</span>); <span class="comment">//22.34</span></span><br></pre></td></tr></table></figure>
+<h2 id="String"><a href="#String" class="headerlink" title="String"></a>String</h2><p>toString() 方法，null和undefined没有这个方法<br>num.toString(8) //把数字转成八进制<br>判定一个数是不是string可以用String()<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">String</span>(<span class="literal">null</span>) = <span class="string">"null"</span>;</span><br><span class="line"><span class="keyword">var</span> tmp;</span><br><span class="line"><span class="built_in">String</span>(tmp) <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="Object"><a href="#Object" class="headerlink" title="Object"></a>Object</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> <span class="built_in">Object</span>(); <span class="comment">//创建新对象</span></span><br></pre></td></tr></table></figure>
+<p>在ECMASript中，Object类型是它的实例的基础。Object类型所具有的任何属性和方法也存在更具体的对象中<br>Object每个实例都具有下列属性和方法<br>1，constructor:保存着用于创建当前对象的函数。<br>2，hasOwnProperty(propertyName):用于检查给定的属性在当前实例中是否存在。<br>3， isPrototypeOf(object) 用于检查传入的对象是否是当前对象的原型。<br>4， toString()返回的对象用字符串表示<br>5,    valueOf() 返回的对象的字符串，数值或布尔值来表示。<br>6， propertyIsEnumerable(propertyName) 用于检查给定的属性是否能够使用for-in语句</p>
+<h2 id="操作符"><a href="#操作符" class="headerlink" title="操作符"></a>操作符</h2><p>++n 在这个n被真正用上之前就+1了<br>n++  在这个n被真正用上之后才+1了<br>几种有趣的情况<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"15"</span>++;  <span class="comment">// 16</span></span><br><span class="line"><span class="string">"asda"</span>++ <span class="comment">//NaN</span></span><br><span class="line"><span class="literal">false</span>++ <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> o = &#123;</span><br><span class="line">	valueOf: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;;</span><br><span class="line">o--; <span class="comment">//值变成-2,原因先调用对象的valueOf()方法，如果结果是NaN,调用toString()后再应用前述规则</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="位操作符"><a href="#位操作符" class="headerlink" title="位操作符"></a>位操作符</h3><p>先将64位值转换成32位的整数，然后执行操作，最后将结果转换回64位。<br>负数二进制补码详情看 p40;<br>位非 ~， 变成负数还要减1；<br>位and , &amp;<br>位或， |<br>位异或， XOR<br>左移 &lt;&lt;<br>右移 &gt;&gt;   第一位符号位不变<br>无符号右移 &gt;&gt;&gt; 和&gt;&gt;在负数情况下不同</p>
+<h3 id="布尔操作符"><a href="#布尔操作符" class="headerlink" title="布尔操作符"></a>布尔操作符</h3><p>逻辑非<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">alert(!<span class="string">"blue"</span>); <span class="comment">//false</span></span><br><span class="line">alert(!<span class="literal">NaN</span>); <span class="comment">//true</span></span><br><span class="line">alert(!<span class="string">""</span>); <span class="comment">//true</span></span><br><span class="line">alert(!<span class="number">12345</span>); <span class="comment">//false</span></span><br></pre></td></tr></table></figure></p>
+<p>逻辑与<br>第一个操作数是null,NaN,undefined分别返回null, NaN,undefined.<br>属于短路操作，第一个操作如果能决定结果false，不会对第二个操作数求值。<br>逻辑或<br>第一个操作数是null,NaN,undefined分别返回null, NaN,undefined.<br>属于短路操作，第一个操作如果能决定结果true，不会对第二个操作数求值。<br>利用这一点避免变量null或者undefined值<br>var myObject = preferredObject || backupObject;</p>
+<h3 id="乘性操作符"><a href="#乘性操作符" class="headerlink" title="乘性操作符"></a>乘性操作符</h3><p>NaN与其他乘， 结果是NaN<br>Infinity与0相乘，结果是NaN</p>
+<h3 id="加性操作符"><a href="#加性操作符" class="headerlink" title="加性操作符"></a>加性操作符</h3><p>一个操作数结果是NaN,则结果是NaN<br>一个字符串和数字相加，数字串变成字符串串联<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="literal">null</span>+<span class="number">10</span>); <span class="comment">//10;</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="literal">undefined</span>+<span class="number">10</span>);<span class="comment">//NaN</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="减性操作符"><a href="#减性操作符" class="headerlink" title="减性操作符"></a>减性操作符</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> result6 = <span class="number">5</span> - <span class="literal">null</span>;<span class="comment">// 5</span></span><br></pre></td></tr></table></figure>
+<h3 id="关系操作符"><a href="#关系操作符" class="headerlink" title="关系操作符"></a>关系操作符</h3><p>字符串比较，比较编码大小<br>一个值是布尔值，先转化为数值。<br><figure class="highlight plain"><figcaption><span>//false```</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">因为比较第一个编码</span><br><span class="line"></span><br><span class="line">### 相等操作符</span><br><span class="line">一个操作数是布尔值，将其转换为数值</span><br><span class="line">null 和undefined是相等的</span><br></pre></td></tr></table></figure></p>
+<p>NaN == NaN  //false<br>NaN ！=NaN //true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">全等 ===  //两个操作数未经转换就相等的情况下返回true</span><br><span class="line"> 不全等！== </span><br><span class="line"> </span><br><span class="line">###  条件操作符</span><br><span class="line">```javascript</span><br><span class="line">var max = (num1 &gt; num2) ?num1:num2;</span><br></pre></td></tr></table></figure></p>
+<h3 id="for语句"><a href="#for语句" class="headerlink" title="for语句"></a>for语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>( i = <span class="number">0</span>; i&lt; count;i++)[</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//没有var的话，我在外面也可以访问到。</span></span><br></pre></td></tr></table></figure>
+<h3 id="for-in语句"><a href="#for-in语句" class="headerlink" title="for-in语句"></a>for-in语句</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (property <span class="keyword">in</span> expression) statement <span class="comment">//要防止里里面有null或者undefined</span></span><br></pre></td></tr></table></figure>
+<h3 id="break和continue"><a href="#break和continue" class="headerlink" title="break和continue"></a>break和continue</h3><p>break会退出循环，从后面继续执行<br>continue跳出此段循环，从循环顶重新开始</p>
+<h3 id="label-看p59页"><a href="#label-看p59页" class="headerlink" title="label 看p59页"></a>label 看p59页</h3><h3 id="with语句-不太用了"><a href="#with语句-不太用了" class="headerlink" title="with语句 不太用了"></a>with语句 不太用了</h3><p>###switch语句</p>
+<h2 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h2><p>1， return之后语句没用<br>2， 可以有多个return<br>3,  return; 代表return undefined<br>4，可以通过argument[i]调用参数，显式参数可以不写，可以用argument.length调用。<br>可以用argument[1]改写第二个参数，假如argument[1]没有指定他的值也是undefined.</p>
+<h3 id="没有重载d"><a href="#没有重载d" class="headerlink" title="没有重载d"></a>没有重载d</h3><p>两个函数重点只看第二个</p>
+<h1 id="变量，作用域和内存问题"><a href="#变量，作用域和内存问题" class="headerlink" title="变量，作用域和内存问题"></a>变量，作用域和内存问题</h1><p>基本类型是简单数据段，就是undefined, null, string ,number, boolean<br>引用类型是指那些可能由多个值构成的对象：object；</p>
+<p>复制基本类型：从一个变量向另一个变量复制基本类型的值，会创建这个值的一个副本。<br>引用类型复制： 复制的值的副本是一个指针， 而这个值指向存储在堆中的一个对象，保存在堆内存中。</p>
+<p>p70 -71 传递参数<br><a href="https://www.zhihu.com/question/27114726" target="_blank" rel="noopener">https://www.zhihu.com/question/27114726</a><br>传参都是传递值而不是传递引用。 对于object传递的其实也是引用的地址。很经典的例子如下。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj1 = &#123;</span><br><span class="line">  value:<span class="string">'111'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="keyword">var</span> obj2 = &#123;</span><br><span class="line">  value:<span class="string">'222'</span></span><br><span class="line">&#125;;</span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">changeStuff</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">  obj.value = <span class="string">'333'</span>;</span><br><span class="line">  obj = obj2;</span><br><span class="line">  <span class="keyword">return</span> obj.value;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> foo = changeStuff(obj1);</span><br><span class="line"><span class="built_in">console</span>.log(foo);<span class="comment">// '222' 参数obj指向了新的对象obj2</span></span><br><span class="line"><span class="built_in">console</span>.log(obj1.value);<span class="comment">//'333'</span></span><br><span class="line"></span><br><span class="line">作者：苏墨橘</span><br><span class="line">链接：https:<span class="comment">//www.zhihu.com/question/27114726/answer/35481766</span></span><br><span class="line">来源：知乎</span><br><span class="line">著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</span><br></pre></td></tr></table></figure></p>
+<p>确定一个值是哪种基本类型可以使用typeof操作符，而确定一个值是哪种引用类型可以用instanceof操作符。<br>所有引用类型的值都是Object的实例。function的typeof是function<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">amd</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    alert(<span class="string">""</span>);</span><br><span class="line">&#125; <span class="comment">//undefined</span></span><br><span class="line"><span class="keyword">typeof</span> amd  <span class="comment">//"function"</span></span><br></pre></td></tr></table></figure></p>
+<p>变量对象都有一个作用域链，都是由内向外的。从内部环境到全局环境。内部环境可以用过作用域链访问所有外部环境，外部环境不能访问内部环境任何变量</p>
+<h2 id="延长作用域链"><a href="#延长作用域链" class="headerlink" title="延长作用域链"></a>延长作用域链</h2><p>p75,with的解释<br><a href="https://lllt.iteye.com/blog/1246424" target="_blank" rel="noopener">https://lllt.iteye.com/blog/1246424</a><br>”由于with语句块中作用域的‘变量对象’是只读的，所以在他本层定义的标识符，不能存储到本层，而是存储到它的上一层作用域”</p>
+<h2 id="没有块级作用域"><a href="#没有块级作用域" class="headerlink" title="没有块级作用域"></a>没有块级作用域</h2><p>js只有函数作用域，没有块级作用域。<br><strong>也就是说if语句和for语句中的变量能被外部访问。</strong><br>查询标识符， 函数先从内部局部变量开始查找变量，搜索到就停止，不然继续向全局搜索。</p>
+<h2 id="垃圾收集"><a href="#垃圾收集" class="headerlink" title="垃圾收集"></a>垃圾收集</h2><h3 id="标记清楚"><a href="#标记清楚" class="headerlink" title="标记清楚"></a>标记清楚</h3><p><a href="https://zhuanlan.zhihu.com/p/23992332" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/23992332</a><br>那什么叫标记清除呢？JavaScript 中有个全局对象，浏览器中是 window。定期的，垃圾回收期将从这个全局对象开始，找所有从这个全局对象开始引用的对象，再找这些对象引用的对象…对这些活着的对象进行标记，这是标记阶段。清除阶段就是清除那些没有被标记的对象。<br><strong>通俗的来讲，就是定时给所有内存中变量打上标记，然后现在在环境中，或使用中的变量去掉标记，最后删除还有标记的。</strong></p>
+<h3 id="引用计数"><a href="#引用计数" class="headerlink" title="引用计数"></a>引用计数</h3><p>如果一个变量被引用了，就引用+1.假如引用它的变量被其他引用了，那么就-1.最后定时清楚引用为0的值。<br>但是有个问题就是有时候两个变量相互引用。<br>为了避免循环引用，一般用代码消除，element = null;这叫解除引用，也能避免用内存太多。</p>
+<p>引用就是按照地址传值</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/frontend/" rel="tag"># frontend</a>
+          
+            <a href="/tags/review/" rel="tag"># review</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/05/02/《图解HTTP》读书笔记/" rel="next" title="《图解HTTP》读书笔记">
+                <i class="fa fa-chevron-left"></i> 《图解HTTP》读书笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Kailiang Dong">
+            
+              <p class="site-author-name" itemprop="name">Kailiang Dong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kailiangdong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:kailiang.dong@tum.de" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kailiang.dong.9" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#第一章-JavaScript简介"><span class="nav-number">1.</span> <span class="nav-text">第一章 JavaScript简介</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第二章-JavaScript运用在html中"><span class="nav-number">2.</span> <span class="nav-text">第二章 JavaScript运用在html中</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#第三章-基本概念"><span class="nav-number">3.</span> <span class="nav-text">第三章 基本概念</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#数据类型"><span class="nav-number">3.1.</span> <span class="nav-text">数据类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">3.1.1.</span> <span class="nav-text">undefined</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Boolean"><span class="nav-number">3.2.</span> <span class="nav-text">Boolean</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Number"><span class="nav-number">3.3.</span> <span class="nav-text">Number</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#数值转换"><span class="nav-number">3.3.1.</span> <span class="nav-text">数值转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Number-1"><span class="nav-number">3.3.1.1.</span> <span class="nav-text">Number()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parseInt"><span class="nav-number">3.3.1.2.</span> <span class="nav-text">parseInt()</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#parseFloat"><span class="nav-number">3.3.1.3.</span> <span class="nav-text">parseFloat()</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#String"><span class="nav-number">3.4.</span> <span class="nav-text">String</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Object"><span class="nav-number">3.5.</span> <span class="nav-text">Object</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作符"><span class="nav-number">3.6.</span> <span class="nav-text">操作符</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#位操作符"><span class="nav-number">3.6.1.</span> <span class="nav-text">位操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#布尔操作符"><span class="nav-number">3.6.2.</span> <span class="nav-text">布尔操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#乘性操作符"><span class="nav-number">3.6.3.</span> <span class="nav-text">乘性操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#加性操作符"><span class="nav-number">3.6.4.</span> <span class="nav-text">加性操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#减性操作符"><span class="nav-number">3.6.5.</span> <span class="nav-text">减性操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关系操作符"><span class="nav-number">3.6.6.</span> <span class="nav-text">关系操作符</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for语句"><span class="nav-number">3.6.7.</span> <span class="nav-text">for语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#for-in语句"><span class="nav-number">3.6.8.</span> <span class="nav-text">for-in语句</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#break和continue"><span class="nav-number">3.6.9.</span> <span class="nav-text">break和continue</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#label-看p59页"><span class="nav-number">3.6.10.</span> <span class="nav-text">label 看p59页</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#with语句-不太用了"><span class="nav-number">3.6.11.</span> <span class="nav-text">with语句 不太用了</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#函数"><span class="nav-number">3.7.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#没有重载d"><span class="nav-number">3.7.1.</span> <span class="nav-text">没有重载d</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变量，作用域和内存问题"><span class="nav-number">4.</span> <span class="nav-text">变量，作用域和内存问题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#延长作用域链"><span class="nav-number">4.1.</span> <span class="nav-text">延长作用域链</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#没有块级作用域"><span class="nav-number">4.2.</span> <span class="nav-text">没有块级作用域</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#垃圾收集"><span class="nav-number">4.3.</span> <span class="nav-text">垃圾收集</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#标记清楚"><span class="nav-number">4.3.1.</span> <span class="nav-text">标记清楚</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#引用计数"><span class="nav-number">4.3.2.</span> <span class="nav-text">引用计数</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kailiang Dong</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
