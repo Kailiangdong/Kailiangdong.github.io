@@ -1,0 +1,834 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next pisces use-motion" lang="en">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="book notes,cloud computing,">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Instruction云计算就是网络计算，分布式计算，并行计算，虚拟化等一系列计算机技术的结合。主要分  IaaS基础设施即服务，将it基础设施提供给客户，cpu，存储，网络像Amazon Ec2 , 一个服务器，配置好cpu，内存 和存储  PaaS平台即服务，数据库，分布式，应用设计开发平台，帮助开发人员一条龙开发，测试，部署（中间件平台）,不用关心底层架构（网络，cpu，存储），只需要去托管">
+<meta name="keywords" content="book notes,cloud computing">
+<meta property="og:type" content="article">
+<meta property="og:title" content="云计算复习笔记">
+<meta property="og:url" content="http://yoursite.com/2019/06/19/云计算复习笔记/index.html">
+<meta property="og:site_name" content="KailiangDong&#39;s Blog">
+<meta property="og:description" content="Instruction云计算就是网络计算，分布式计算，并行计算，虚拟化等一系列计算机技术的结合。主要分  IaaS基础设施即服务，将it基础设施提供给客户，cpu，存储，网络像Amazon Ec2 , 一个服务器，配置好cpu，内存 和存储  PaaS平台即服务，数据库，分布式，应用设计开发平台，帮助开发人员一条龙开发，测试，部署（中间件平台）,不用关心底层架构（网络，cpu，存储），只需要去托管">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190612194536799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019061219455072.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://i.screenshot.net/889r1tn">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190612015141633.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190612015241840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190617034941675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/2019061703501241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190618181048582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://img-blog.csdnimg.cn/20190618185935825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXf5LQ.md.png">
+<meta property="og:image" content="https://s2.ax1x.com/2019/06/19/VXhwYq.png">
+<meta property="og:updated_time" content="2019-06-25T15:23:20.032Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="云计算复习笔记">
+<meta name="twitter:description" content="Instruction云计算就是网络计算，分布式计算，并行计算，虚拟化等一系列计算机技术的结合。主要分  IaaS基础设施即服务，将it基础设施提供给客户，cpu，存储，网络像Amazon Ec2 , 一个服务器，配置好cpu，内存 和存储  PaaS平台即服务，数据库，分布式，应用设计开发平台，帮助开发人员一条龙开发，测试，部署（中间件平台）,不用关心底层架构（网络，cpu，存储），只需要去托管">
+<meta name="twitter:image" content="https://img-blog.csdnimg.cn/20190612194536799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Pisces',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/06/19/云计算复习笔记/">
+
+
+
+
+
+  <title>云计算复习笔记 | KailiangDong's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">KailiangDong's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Think Over then do it.</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br>
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br>
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/06/19/云计算复习笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Kailiang Dong">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/images/avatar.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="KailiangDong's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">云计算复习笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2019-06-19T17:20:41+02:00">
+                2019-06-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/study/" itemprop="url" rel="index">
+                    <span itemprop="name">study</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Instruction"><a href="#Instruction" class="headerlink" title="Instruction"></a>Instruction</h1><p>云计算就是网络计算，分布式计算，并行计算，虚拟化等一系列计算机技术的结合。<br>主要分 </p>
+<h2 id="IaaS"><a href="#IaaS" class="headerlink" title="IaaS"></a>IaaS</h2><p>基础设施即服务，将it基础设施提供给客户，cpu，存储，网络<br>像Amazon Ec2 , 一个服务器，配置好cpu，内存 和存储 </p>
+<h2 id="PaaS"><a href="#PaaS" class="headerlink" title="PaaS"></a>PaaS</h2><p>平台即服务，数据库，分布式，应用设计开发平台，帮助开发人员一条龙开发，测试，部署<br>（中间件平台）,不用关心底层架构（网络，cpu，存储），只需要去托管。有非常弹性的后端，浏览量大了也可以。<br>  核心功能( 服务器集群， 分布式存储，分布式计算，分布式数据库）‘<br>  例子 google app engine ,windows azure</p>
+<h2 id="SaaS"><a href="#SaaS" class="headerlink" title="SaaS"></a>SaaS</h2><p>软件即服务，用户没必要防病毒了，办公应用软件<br>系统维护不必用户操心<br>SaaS是一种通过Internet提供软件的模式，厂商将应用软件统一部署在自己的服务器上，客户可以根据自己实际需求，通过互联网向厂商购买所需的应用软件服务，按购买的服务多少和时间长短向厂商支付费用，并通过互联网获得厂商提供的服务。用户购买基于WEB的软件，而不是将软件安装在自己的电脑上，用户也无需对软件进行定期的维护与管理，服务提供商会全权帮你干这些事。<br>例子： google docs，salesforce crm应用</p>
+<p>类型还分 public, private, Community(属于一个组织的），Vitual Private (服务自己，但是借用第三方的），Hybrid Cloud</p>
+<h2 id="云计算主要特性"><a href="#云计算主要特性" class="headerlink" title="云计算主要特性"></a>云计算主要特性</h2><p>On-demand self-service.   按需自助服务<br>Broad network access. 无处不在的网络接入<br>Resource pooling. 资源池<br>Rapid elasticity. 敏捷的弹性<br>Measured service. 可度量的服务</p>
+<h1 id="Visualization"><a href="#Visualization" class="headerlink" title="Visualization"></a>Visualization</h1><p>核心思想 利用软件或固件管理程序构成虚拟化层，把物理资源映射为虚拟资源。<br>把一个或多个物理服务器虚拟成多个逻辑上的服务器，集中管理，能跨越物理平台不受限制。</p>
+<h2 id="服务器虚拟化"><a href="#服务器虚拟化" class="headerlink" title="服务器虚拟化"></a>服务器虚拟化</h2><p><img src="https://img-blog.csdnimg.cn/20190612194536799.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>对硬件的管理需要宿主机os协调，性能比较低<br><img src="https://img-blog.csdnimg.cn/2019061219455072.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>Hypervisor提供指令集和设备接口。</p>
+<p>服务器虚拟化，cpu虚拟，内存虚拟，io虚拟<br>虚拟机迁移</p>
+<h2 id="CPU虚拟化"><a href="#CPU虚拟化" class="headerlink" title="CPU虚拟化"></a>CPU虚拟化</h2><p>cpu虚拟化技术把物理cpu抽象成虚拟cpu，任意时刻一个物理cpu只能运行一个虚拟cpu的指令</p>
+<h2 id="存储虚拟化"><a href="#存储虚拟化" class="headerlink" title="存储虚拟化"></a>存储虚拟化</h2><p>将系统中分散的存储资源整合起来<br>NAS技术 网络连接存储技术<br>难点：数据状态一致性的保证，负载均衡</p>
+<h2 id="网络虚拟化"><a href="#网络虚拟化" class="headerlink" title="网络虚拟化"></a>网络虚拟化</h2><p>解决的问题： 数据中心超大流量，统一交换网络。<br>定义： 网络虚拟化是让一个物理网络能够支持多个逻辑网络。<br>例子：VLAN, VPN</p>
+<h3 id="网卡虚拟化"><a href="#网卡虚拟化" class="headerlink" title="网卡虚拟化"></a>网卡虚拟化</h3><h2 id="软件定义网络-SDN"><a href="#软件定义网络-SDN" class="headerlink" title="软件定义网络 SDN"></a>软件定义网络 SDN</h2><p>把网络分为控制层和数据层<br>sdn不等于网络虚拟化，只是sdn这种技术非常适合网络虚拟化。本质分离数据层和控制层<br>例子：openflow</p>
+<h2 id="XEN"><a href="#XEN" class="headerlink" title="XEN"></a>XEN</h2><p>xen是一个开放源代码的虚拟机（vmm), 为x86架构的机器而设计。xen可以在一套物理硬件上安全的执行多个虚拟机。<br>xen有很多层，名字叫domain，最底层就是domain0（是在系统引导时自动创建，拥有特殊的管理权限）<br>所有指令均须root用户在domain0机器上执行，domain0管理以上的层。</p>
+<h1 id="云计算安全"><a href="#云计算安全" class="headerlink" title="云计算安全"></a>云计算安全</h1><p>云上数据安全很重要。</p>
+<h2 id="可信访问控制"><a href="#可信访问控制" class="headerlink" title="可信访问控制"></a>可信访问控制</h2><p>密码学方法实现访问控制。密文检索。</p>
+<h2 id="数据存在和可使用性证明"><a href="#数据存在和可使用性证明" class="headerlink" title="数据存在和可使用性证明"></a>数据存在和可使用性证明</h2><h2 id="云中隐私保护"><a href="#云中隐私保护" class="headerlink" title="云中隐私保护"></a>云中隐私保护</h2><h2 id="虚拟安全技术"><a href="#虚拟安全技术" class="headerlink" title="虚拟安全技术"></a>虚拟安全技术</h2><h2 id="可信云计算"><a href="#可信云计算" class="headerlink" title="可信云计算"></a>可信云计算</h2><h1 id="云服务概述"><a href="#云服务概述" class="headerlink" title="云服务概述"></a>云服务概述</h1><h2 id="IaaS-1"><a href="#IaaS-1" class="headerlink" title="IaaS"></a>IaaS</h2><p><img src="https://i.screenshot.net/889r1tn" alt="iaas"><br>虚拟化就是把物理的资源动态拼装 组合，产生一个个逻辑系统</p>
+<h1 id="ppt上visualization"><a href="#ppt上visualization" class="headerlink" title="ppt上visualization"></a>ppt上visualization</h1><p>虚拟化，是指通过虚拟化技术将一台计算机虚拟为多台逻辑计算机。在一台计算机上同时运行多个逻辑计算机，每个逻辑计算机可运行不同的操作系统，并且应用程序都可以在相互独立的空间内运行而互不影响，从而显著提高计算机的工作效率。<br>可以增加资源共享<br>减少硬件故障引起的停机时间<br>提高效率<br>提高可靠性</p>
+<p><img src="https://img-blog.csdnimg.cn/20190612015141633.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20190612015241840.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="Openstack"><a href="#Openstack" class="headerlink" title="Openstack"></a>Openstack</h1><p>openstack是一个旨在为公共以及私有云的建设与管理提供软件的开源项目<br>主要三块， 计算服务nova, 对象存储服务swift, 镜像服务Glance。</p>
+<h2 id="计算服务nova"><a href="#计算服务nova" class="headerlink" title="计算服务nova"></a>计算服务nova</h2><p>负责创建虚拟机并管理虚拟机实例的整个生命周期<br>管理虚拟机实例的整个生命周期，创建虚拟机，删除虚拟机，迁移虚拟机<br>组成 api,message queue,compute, scheduler,network manager, volume manager<br>Libvirt为各种虚拟化工具提供接口</p>
+<h2 id="对象服务swift"><a href="#对象服务swift" class="headerlink" title="对象服务swift"></a>对象服务swift</h2><p>用于<strong>持久性静态数据</strong>的长期存储，通过内置沉鱼及高容错率机制实现对象存储的系统。</p>
+<h2 id="镜像服务Glance"><a href="#镜像服务Glance" class="headerlink" title="镜像服务Glance"></a>镜像服务Glance</h2><p>系统名为Glance,提供虚拟磁盘镜像的 分类管理和镜像库的存储服务。<br>（通过swift存储快照）</p>
+<h2 id="Neutron"><a href="#Neutron" class="headerlink" title="Neutron"></a>Neutron</h2><p>提供云计算的网络虚拟化技术，管理ip地址池，定义网络子网，路由器</p>
+<h2 id="Cinder"><a href="#Cinder" class="headerlink" title="Cinder"></a>Cinder</h2><p>为运行的虚拟机实例提供持久的数据库存储服务，为虚拟机提供硬盘</p>
+<h2 id="openstack-实验"><a href="#openstack-实验" class="headerlink" title="openstack 实验"></a>openstack 实验</h2><p>就是 进行虚拟机的分配管理，分配它的网络</p>
+<h1 id="Docker"><a href="#Docker" class="headerlink" title="Docker"></a>Docker</h1><p>传统软件开发总要不断部署，很麻烦<br>Docker让开发测试 运维部门一起运行<br>Docker就是轻量级虚拟机，实现了应用级别的资源隔离和配额<br>Docker是容器引擎<br>作用：简化配置， 提高开发效率，整合服务器，隔离应用，调试能力<br><img src="https://img-blog.csdnimg.cn/20190617034941675.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><img src="https://img-blog.csdnimg.cn/2019061703501241.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h1 id="Docker实验"><a href="#Docker实验" class="headerlink" title="Docker实验"></a>Docker实验</h1><p><a href="https://blog.csdn.net/dongdong9223/article/details/52998375" target="_blank" rel="noopener">https://blog.csdn.net/dongdong9223/article/details/52998375</a><br>安装完docker后，可以查看搜索镜像，删除镜像。<br>可以以镜像为模板创建容器<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -i -t --name=tony ubuntu /bin/bash</span><br></pre></td></tr></table></figure></p>
+<p>创建共同网络给容器通信<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker network create –driver bridge –subnet 172.22.16.0/24 –gateway 172.22.16.1 my_net2</span><br></pre></td></tr></table></figure></p>
+<h1 id="镜像"><a href="#镜像" class="headerlink" title="镜像"></a>镜像</h1><p>镜像可以理解为虚拟机模板，用户按照实际需要制作一个虚拟机模板，并导入Glance服务，再根据这个镜像来启动若干个虚拟机实例。</p>
+<p>所谓镜像文件其实和rar ZIP压缩包类似，它将特定的一系列文件按照一定的格式制作成单一的文件，以方便用户下载和使用，例如一个操作系统、游戏等。它最重要的特点是可以被特定的软件识别并可直接刻录到光盘上。其实通常意义上的镜像文件可以再扩展一下，在镜像文件中可以包含更多的信息。<strong>比如说系统文件、引导文件、分区表信息等，这样镜像文件就可以包含一个分区甚至是一块硬盘的所有信息。</strong>而通常意义上的刻录软件都可以直接将支持的镜像文件所包含的内容刻录到光盘上。其实，镜像文件就是光盘的“提取物”。<br>openstack中 虚拟机是通过镜像创建的</p>
+<h1 id="快照"><a href="#快照" class="headerlink" title="快照"></a>快照</h1><p>可以看作虚拟机的备份，作用是虚拟机的恢复，恢复到某个时间点</p>
+<h1 id="仓库-镜像-容器"><a href="#仓库-镜像-容器" class="headerlink" title="仓库 镜像 容器"></a>仓库 镜像 容器</h1><p>一个镜像 有一个操作系统<br>容器是镜像创建的实例<br>仓库藏着镜像</p>
+<p>以镜像为模板可以创造多个容器<br>容器是镜像的实例，镜像是容器的模<br>容器和鏡像的關系就像對象和類</p>
+<h1 id="Google云计算"><a href="#Google云计算" class="headerlink" title="Google云计算"></a>Google云计算</h1><h2 id="GFS"><a href="#GFS" class="headerlink" title="GFS"></a>GFS</h2><p>分布式文件系统， Hadoop的HDFS基于它的开源实现<br>所有核心技术的底层，相当于文件系统， 为第三方应用提供大尺寸文件存储功能<br>起因： 当时分布式系统普遍把容错能力放在硬件上，对硬件要求比较高，目的在不可靠的上面构建可靠分布式文件系统。<br><img src="https://img-blog.csdnimg.cn/20190618181048582.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>文件按照固定大小分块， chunk最大64mb<br>客户端首先访问master 节点，获取交互的chunk server信息，然后访问这些chunk server 完成数据存储工作。<br>控制流和数据流的分离<br>真实数据读取都从chunk server获取<br>master 掌握整个系统负载均衡<br>master和chunk server以进程方式运行，互相不干扰。</p>
+<pre><code>内核态：控制计算机的硬件资源，并提供上层应用程序运行的环境。
+用户态：上层应用程序的活动空间，应用程序的执行必须依托于内核提供的资源。
+</code></pre><p>缺点： <strong>master节点 是瓶颈</strong></p>
+<h2 id="容错机制"><a href="#容错机制" class="headerlink" title="容错机制"></a>容错机制</h2><h3 id="Master备份"><a href="#Master备份" class="headerlink" title="Master备份"></a>Master备份</h3><p>1， 每个元数据信息保存在各个chunk Server上master 故障时，磁盘回复。<br>2， master还有远程备份</p>
+<h3 id="Chunk-Server备份"><a href="#Chunk-Server备份" class="headerlink" title="Chunk Server备份"></a>Chunk Server备份</h3><p>1， 每个chunk server有三个备份，分布在不同chunk server<br>2， 每次写入时必须将所有副本全部写入才算写入成功。</p>
+<h2 id="Mapreduce"><a href="#Mapreduce" class="headerlink" title="Mapreduce"></a>Mapreduce</h2><p>分布式大数据批量处理，一个处理海量数据的并行编程模式<br>map（映射）， Reduce(化简）<br>输入 &lt;key, value&gt;对<br>reduce 对相同key的value值进行处理。</p>
+<h3 id="容错机制-1"><a href="#容错机制-1" class="headerlink" title="容错机制"></a>容错机制</h3><p><img src="https://img-blog.csdnimg.cn/20190618185935825.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl8zOTI4NTcxMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="Bigtable"><a href="#Bigtable" class="headerlink" title="Bigtable"></a>Bigtable</h2><p>HBase， 启发了无数nosql数据库，google中类似于数据库</p>
+<h2 id="Chubby"><a href="#Chubby" class="headerlink" title="Chubby"></a>Chubby</h2><p>为上述三个提供锁服务</p>
+<h1 id="亚马逊云计算"><a href="#亚马逊云计算" class="headerlink" title="亚马逊云计算"></a>亚马逊云计算</h1><h1 id="微软云计算"><a href="#微软云计算" class="headerlink" title="微软云计算"></a>微软云计算</h1><p>azure,提供paas平台</p>
+<h1 id="Hadoop"><a href="#Hadoop" class="headerlink" title="Hadoop"></a>Hadoop</h1><p><a href="https://imgchr.com/i/VXf5LQ" target="_blank" rel="noopener"><img src="https://s2.ax1x.com/2019/06/19/VXf5LQ.md.png" alt="VXf5LQ.md.png"></a></p>
+<p><img src="https://s2.ax1x.com/2019/06/19/VXhwYq.png" alt="VXhwYq.png"></p>
+<h2 id="HDFS分布式文件系统"><a href="#HDFS分布式文件系统" class="headerlink" title="HDFS分布式文件系统"></a>HDFS分布式文件系统</h2><p>数据存储管理的基础<br>高度容错系统</p>
+<h2 id="YARN"><a href="#YARN" class="headerlink" title="YARN"></a>YARN</h2><p>集群资源管理系统<br>把JobTracker的资源分配和作业调度及监督分开<br>ResourceManager ,Application Manager, NodeManage</p>
+<h2 id="MapReduce"><a href="#MapReduce" class="headerlink" title="MapReduce"></a>MapReduce</h2><p>分布式离线计算框架</p>
+<h2 id="Tez"><a href="#Tez" class="headerlink" title="Tez"></a>Tez</h2><p>DAG计算框架</p>
+<h2 id="Storm-流式计算框架"><a href="#Storm-流式计算框架" class="headerlink" title="Storm 流式计算框架"></a>Storm 流式计算框架</h2><p>分布式，容错的实时计算系统</p>
+<h2 id="Spark-内存计算框架"><a href="#Spark-内存计算框架" class="headerlink" title="Spark 内存计算框架"></a>Spark 内存计算框架</h2><p>构建大规模，低延时的数据分析应用<br>Spark采用了基于内存的分布式数据集，优化了迭代式工作负载和交互式查询</p>
+<h2 id="HIVE"><a href="#HIVE" class="headerlink" title="HIVE"></a>HIVE</h2><p>海量结构化的日志数据统计问题</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/book-notes/" rel="tag"># book notes</a>
+          
+            <a href="/tags/cloud-computing/" rel="tag"># cloud computing</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/06/12/python-grammar-key-point-review/" rel="next" title="python grammar key point review">
+                <i class="fa fa-chevron-left"></i> python grammar key point review
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/06/25/Scrapy-tutorial-and-practise-crawl-job-webste/" rel="prev" title="Scrapy tutorial and practise -- crawl job webste">
+                Scrapy tutorial and practise -- crawl job webste <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/images/avatar.jpg" alt="Kailiang Dong">
+            
+              <p class="site-author-name" itemprop="name">Kailiang Dong</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/Kailiangdong" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:kailiang.dong@tum.de" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="https://www.facebook.com/kailiang.dong.9" target="_blank" title="FB Page">
+                      
+                        <i class="fa fa-fw fa-facebook"></i>FB Page</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Instruction"><span class="nav-number">1.</span> <span class="nav-text">Instruction</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IaaS"><span class="nav-number">1.1.</span> <span class="nav-text">IaaS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PaaS"><span class="nav-number">1.2.</span> <span class="nav-text">PaaS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SaaS"><span class="nav-number">1.3.</span> <span class="nav-text">SaaS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云计算主要特性"><span class="nav-number">1.4.</span> <span class="nav-text">云计算主要特性</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Visualization"><span class="nav-number">2.</span> <span class="nav-text">Visualization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器虚拟化"><span class="nav-number">2.1.</span> <span class="nav-text">服务器虚拟化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#CPU虚拟化"><span class="nav-number">2.2.</span> <span class="nav-text">CPU虚拟化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#存储虚拟化"><span class="nav-number">2.3.</span> <span class="nav-text">存储虚拟化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#网络虚拟化"><span class="nav-number">2.4.</span> <span class="nav-text">网络虚拟化</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#网卡虚拟化"><span class="nav-number">2.4.1.</span> <span class="nav-text">网卡虚拟化</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#软件定义网络-SDN"><span class="nav-number">2.5.</span> <span class="nav-text">软件定义网络 SDN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#XEN"><span class="nav-number">2.6.</span> <span class="nav-text">XEN</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#云计算安全"><span class="nav-number">3.</span> <span class="nav-text">云计算安全</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#可信访问控制"><span class="nav-number">3.1.</span> <span class="nav-text">可信访问控制</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据存在和可使用性证明"><span class="nav-number">3.2.</span> <span class="nav-text">数据存在和可使用性证明</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#云中隐私保护"><span class="nav-number">3.3.</span> <span class="nav-text">云中隐私保护</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#虚拟安全技术"><span class="nav-number">3.4.</span> <span class="nav-text">虚拟安全技术</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#可信云计算"><span class="nav-number">3.5.</span> <span class="nav-text">可信云计算</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#云服务概述"><span class="nav-number">4.</span> <span class="nav-text">云服务概述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#IaaS-1"><span class="nav-number">4.1.</span> <span class="nav-text">IaaS</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#ppt上visualization"><span class="nav-number">5.</span> <span class="nav-text">ppt上visualization</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Openstack"><span class="nav-number">6.</span> <span class="nav-text">Openstack</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#计算服务nova"><span class="nav-number">6.1.</span> <span class="nav-text">计算服务nova</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#对象服务swift"><span class="nav-number">6.2.</span> <span class="nav-text">对象服务swift</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#镜像服务Glance"><span class="nav-number">6.3.</span> <span class="nav-text">镜像服务Glance</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Neutron"><span class="nav-number">6.4.</span> <span class="nav-text">Neutron</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Cinder"><span class="nav-number">6.5.</span> <span class="nav-text">Cinder</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#openstack-实验"><span class="nav-number">6.6.</span> <span class="nav-text">openstack 实验</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker"><span class="nav-number">7.</span> <span class="nav-text">Docker</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Docker实验"><span class="nav-number">8.</span> <span class="nav-text">Docker实验</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#镜像"><span class="nav-number">9.</span> <span class="nav-text">镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#快照"><span class="nav-number">10.</span> <span class="nav-text">快照</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#仓库-镜像-容器"><span class="nav-number">11.</span> <span class="nav-text">仓库 镜像 容器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Google云计算"><span class="nav-number">12.</span> <span class="nav-text">Google云计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#GFS"><span class="nav-number">12.1.</span> <span class="nav-text">GFS</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#容错机制"><span class="nav-number">12.2.</span> <span class="nav-text">容错机制</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Master备份"><span class="nav-number">12.2.1.</span> <span class="nav-text">Master备份</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Chunk-Server备份"><span class="nav-number">12.2.2.</span> <span class="nav-text">Chunk Server备份</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Mapreduce"><span class="nav-number">12.3.</span> <span class="nav-text">Mapreduce</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#容错机制-1"><span class="nav-number">12.3.1.</span> <span class="nav-text">容错机制</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Bigtable"><span class="nav-number">12.4.</span> <span class="nav-text">Bigtable</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Chubby"><span class="nav-number">12.5.</span> <span class="nav-text">Chubby</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#亚马逊云计算"><span class="nav-number">13.</span> <span class="nav-text">亚马逊云计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#微软云计算"><span class="nav-number">14.</span> <span class="nav-text">微软云计算</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Hadoop"><span class="nav-number">15.</span> <span class="nav-text">Hadoop</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#HDFS分布式文件系统"><span class="nav-number">15.1.</span> <span class="nav-text">HDFS分布式文件系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#YARN"><span class="nav-number">15.2.</span> <span class="nav-text">YARN</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MapReduce"><span class="nav-number">15.3.</span> <span class="nav-text">MapReduce</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Tez"><span class="nav-number">15.4.</span> <span class="nav-text">Tez</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Storm-流式计算框架"><span class="nav-number">15.5.</span> <span class="nav-text">Storm 流式计算框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Spark-内存计算框架"><span class="nav-number">15.6.</span> <span class="nav-text">Spark 内存计算框架</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#HIVE"><span class="nav-number">15.7.</span> <span class="nav-text">HIVE</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Kailiang Dong</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Pisces</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

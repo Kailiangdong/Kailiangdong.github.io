@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="frontend,review,">
+  <meta name="keywords" content="frontend,book notes,javascript,">
 
 
 
@@ -80,14 +80,14 @@
 
 
 <meta name="description" content="第一章ECMAScripts就是JavaScriptBOM(浏览器对象模型）JavaScript操控web浏览器的手段 第二章JavaScript 是 用编译型语言编写的代码有错误，这些错误再代码编译阶段发现，而解释型原因只能等到解释器执行到有关代码时才能被发现。单词“happy”是JavaScript语言中的一个字面量 literal必须类型声明的是强类型，任意阶段改变变量是弱类型单引号放在双引">
-<meta name="keywords" content="frontend,review">
+<meta name="keywords" content="frontend,book notes,javascript">
 <meta property="og:type" content="article">
 <meta property="og:title" content="《JavaScript DOM 编程艺术》 复习笔记">
 <meta property="og:url" content="http://yoursite.com/2019/04/25/《JavaScript-DOM-编程艺术》-复习笔记/index.html">
 <meta property="og:site_name" content="KailiangDong&#39;s Blog">
 <meta property="og:description" content="第一章ECMAScripts就是JavaScriptBOM(浏览器对象模型）JavaScript操控web浏览器的手段 第二章JavaScript 是 用编译型语言编写的代码有错误，这些错误再代码编译阶段发现，而解释型原因只能等到解释器执行到有关代码时才能被发现。单词“happy”是JavaScript语言中的一个字面量 literal必须类型声明的是强类型，任意阶段改变变量是弱类型单引号放在双引">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2019-05-06T16:59:37.046Z">
+<meta property="og:updated_time" content="2019-06-25T15:11:29.696Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="《JavaScript DOM 编程艺术》 复习笔记">
 <meta name="twitter:description" content="第一章ECMAScripts就是JavaScriptBOM(浏览器对象模型）JavaScript操控web浏览器的手段 第二章JavaScript 是 用编译型语言编写的代码有错误，这些错误再代码编译阶段发现，而解释型原因只能等到解释器执行到有关代码时才能被发现。单词“happy”是JavaScript语言中的一个字面量 literal必须类型声明的是强类型，任意阶段改变变量是弱类型单引号放在双引">
@@ -378,8 +378,9 @@
 <p>结构化程序设计备忘，函数应该只有一个入口和一个出口，但是显示这样做会让代码很难读。</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">links[i].onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br></pre></td></tr></table></figure>
 <p>这条语句定义了一个匿名函数，这是代码执行时创建的函数的方法。他把links[i]元素的onclick事件处理函数指定为这个匿名函数，这个匿名函数里的所有语句将在links[i]元素所对应的链接被点击时执行。<br>我传递给showPic函数的参数时关键词this,它代表此时此刻与onclick方法相关联的那个元素。showPic(this)<br>要执行这个函数就要windows.onload,但是每个事件处理函数只能绑定一条指令。怎么办呢<br>Windows.onload = function(){<br>    Firstfunction();<br>    Secondfunction();<br>}<br>还有个弹性的方法，就是addLoadEvent.它只有一个参数，打算在页面加载完毕时执行的函数的名字。具体代码看p83页<br>这将把那些在页面加载完毕时执行的函数创建为一个队列。<br>addLoadEvent(firstFunction);<br>addLoadEvent(secondFuncton);</p>
-<p>三元操作符<br>Variable= condition ？if true : if false;<br>最好不要使用onkeypress事件处理函数，onclick事件处理函数已经能满足需要。<br>Css<br>一般的body，p,h1<br>直接用body{<br>}<br>p{<br>}<br>h1{<br>}<br>对于class<br>.selector{}<br>对于id</p>
-<p>#imagegallery{}</p>
+<p>三元操作符<br>Variable= condition ？if true : if false;<br>最好不要使用onkeypress事件处理函数，onclick事件处理函数已经能满足需要。<br>Css<br>一般的body，p,h1<br>直接用<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">body</span>&#123; &#125;</span><br><span class="line"><span class="selector-tag">p</span>&#123; &#125;</span><br><span class="line"><span class="selector-tag">h1</span>&#123; &#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于class<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.selector</span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
+<p>对于id<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#imagegallery</span>&#123;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>getElementById,getElementsByTagName,getAttribute, setAttribute 都是DOM Core的组成部分<br>另一个就是HTML-DOM<br>比如说placeholder.setAttribute(“src”,source);<br>placeholder.src = source<br>前者就是DOM Core，后者是HTML-DOM</p>
 <h1 id="第七章"><a href="#第七章" class="headerlink" title="第七章"></a>第七章</h1><p>本章学习dom方法，创建新元素和修改现有元素改变网页结构<br>document.write<br>document对象的write()方法可以方便快捷地把字符串插入到文档中。<br>最大缺点，违反了”行为应该与表现分离的原则“，即使把document.write语句挪到外部函数，也还是需要标记 body 部分使用 script 标签调用那个函数。</p>
 <p>innerHTML属性可以用来读，写某给定元素的html内容，大段大段的插入。<br>DOM非常详细，对每个节点访问，innerHTML则简单很多，毫无细节可言<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> testdiv = <span class="built_in">document</span>.getElementById(<span class="string">"testdiv"</span>);</span><br><span class="line">	testdiv.innerHTML = <span class="string">"&lt;p&gt; I inserted &lt;em&gt;this&lt;/em&gt;content.&lt;p&gt;"</span>;</span><br></pre></td></tr></table></figure></p>
@@ -464,7 +465,9 @@
           
             <a href="/tags/frontend/" rel="tag"># frontend</a>
           
-            <a href="/tags/review/" rel="tag"># review</a>
+            <a href="/tags/book-notes/" rel="tag"># book notes</a>
+          
+            <a href="/tags/javascript/" rel="tag"># javascript</a>
           
         </div>
       
@@ -568,7 +571,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -590,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-count">10</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
